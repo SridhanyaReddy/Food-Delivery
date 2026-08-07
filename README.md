@@ -1,71 +1,102 @@
-#  Food Delivery Time Prediction
+# Food Delivery Time Prediction
 
-## Project Overview
-
-This project aims to predict the delivery time of food orders using Machine Learning. The dataset is explored and cleaned using Pandas to prepare it for model building.
+An end-to-end Machine Learning project to predict the delivery time of food orders based on historical data. This repository documents the step-by-step process of data exploration, preprocessing, baseline model training, and performance evaluation.
 
 ---
 
-## Features (Input Variables)
+## 📌 Problem Statement
 
-The model uses the following features to predict delivery time:
-
-- Delivery Person Age
-- Delivery Person Ratings
-- Restaurant Location
-- Delivery Location
-- Order Date
-- Order Time
-- Pickup Time
-- Weather Conditions
-- Road Traffic Density
-- Vehicle Condition
-- Type of Order
-- Type of Vehicle
-- Multiple Deliveries
-- Festival
-- City
+Predicting food delivery time accurately is critical for logistics optimization, improving rider dispatch efficiency, and boosting customer satisfaction. Using features like delivery agent details, location coordinates, traffic density, and weather conditions, this project aims to build regression models that predict the total time taken (in minutes) for a delivery.
 
 ---
 
-## Label (Target Variable)
+## 📁 Project Structure
 
-- **Time_taken(min)**
-
----
-
-## Weekly Progress
-
-### Week 1: Data Exploration & Cleaning
-- Loaded the dataset using Pandas
-- Explored columns, data shapes, and types
-- Checked for and handled missing values (imputed Age and Ratings using medians)
-- Verified duplicates and saved the cleaned dataset to `data/processed/cleaned_food_delivery.csv`
-
-### Week 2: Baseline Model Training
-- Cleaned and prepared string columns: `Time_taken(min)` (extracted numeric values) and `multiple_deliveries` (imputed missing string values with median)
-- Selected 8 baseline numerical features
-- Split dataset using `train_test_split()` (80% Train, 20% Test, `random_state=42`)
-- Trained a **Linear Regression** model on training data
-- Evaluated performance on test data:
-  - **Mean Absolute Error (MAE)**: 6.14 minutes
-  - **Mean Squared Error (MSE)**: 59.57
-  - **Root Mean Squared Error (RMSE)**: 7.72 minutes
-  - **R² Score**: 0.3206
+```text
+├── data/
+│   ├── raw/          # Raw dataset files
+│   └── processed/    # Cleaned and preprocessed datasets (e.g., cleaned_food_delivery.csv)
+├── notebooks/
+│   ├── 01_Data_Exploration.ipynb       # Phase 1: Data cleaning and exploratory analysis
+│   └── 02_Train_First_regression_model.ipynb  # Phase 2: Baseline linear regression model training
+├── requirements.txt  # Python package dependencies
+└── README.md         # Project documentation
+```
 
 ---
 
-## Technologies Used
+## 🚀 Project Methodology & Weekly Progress
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn (Linear Regression, Train-Test Split, Evaluation Metrics)
-- Jupyter Notebook
-- VS Code
+### 🔍 Phase 1: Data Exploration & Cleaning (Week 1)
+In the first notebook ([01_Data_Exploration.ipynb](file:///C:/Users/SRIDHANYA%20REDDY%20MAND/OneDrive/Desktop/Food%20Delivery/notebooks/01_Data_Exploration.ipynb)), the raw dataset was analyzed and cleaned:
+* **Exploratory Data Analysis**: Inspected shapes, column types, and statistical properties.
+* **Missing Value Imputation**: Handled missing values in `Delivery_person_Age` and `Delivery_person_Ratings` by imputing them with their respective medians.
+* **Data Validation**: Verified that no duplicate records existed.
+* **Data Export**: Saved the clean intermediate dataset as `cleaned_food_delivery.csv`.
+
+### ⚙️ Phase 2: Baseline Model Training (Week 2)
+In the second notebook ([02_Train_First_regression_model.ipynb](file:///C:/Users/SRIDHANYA%20REDDY%20MAND/OneDrive/Desktop/Food%20Delivery/notebooks/02_Train_First_regression_model.ipynb)), a baseline model was trained using the raw numerical features:
+* **Target Extraction**: Cleaned `Time_taken(min)` string column to extract exact integer values (e.g., `(min) 24` -> `24`).
+* **Feature Selection**: Isolated key numerical features:
+  - `Delivery_person_Age`
+  - `Delivery_person_Ratings`
+  - `Restaurant_latitude`, `Restaurant_longitude`
+  - `Delivery_location_latitude`, `Delivery_location_longitude`
+  - `Vehicle_condition`
+  - `multiple_deliveries` (imputed missing values using the median).
+* **Train-Test Split**: Divided the dataset into training (80%) and testing (20%) sets using `random_state=42` for reproducibility.
+* **Model Training**: Trained a baseline **Linear Regression** model.
 
 ---
 
-## Dataset
+## 📊 Evaluation Results
 
-Food Delivery Dataset containing information about delivery personnel, restaurant and delivery locations, weather conditions, traffic density, vehicle details, and delivery time.
+The performance of the baseline Linear Regression model on the test dataset (20%) is summarized below:
+
+| Metric | Description | Baseline Value |
+| :--- | :--- | :---: |
+| **Mean Absolute Error (MAE)** | Average absolute deviation from actual time | **6.14 minutes** |
+| **Mean Squared Error (MSE)** | Average squared deviation | **59.57** |
+| **Root Mean Squared Error (RMSE)** | Standard deviation of residuals | **7.72 minutes** |
+| **R² Score (Coefficient of Determination)** | Variance in target explained by the features | **0.3206 (32.1%)** |
+
+### Key Observations
+* **Average Error**: On average, the baseline model's predictions are off by **±6.14 minutes**.
+* **Variance Explained**: The selected raw numerical features explain about **32.1%** of the variance in delivery times.
+* **Interpretation**: Linear regression provides a reasonable starting baseline, but there is significant room for improvement since the model does not yet utilize categorical variables (like weather or traffic density) or engineered features (like distance).
+
+---
+
+## 🛠️ Setup & Installation
+
+To run this project locally, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/SridhanyaReddy/Food-Delivery.git
+   cd "Food Delivery"
+   ```
+
+2. **Install the dependencies**:
+   Make sure you have Python installed, then run:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the Jupyter notebooks**:
+   ```bash
+   jupyter notebook
+   ```
+   Open and run the notebooks in sequence:
+   * [01_Data_Exploration.ipynb](file:///C:/Users/SRIDHANYA%20REDDY%20MAND/OneDrive/Desktop/Food%20Delivery/notebooks/01_Data_Exploration.ipynb)
+   * [02_Train_First_regression_model.ipynb](file:///C:/Users/SRIDHANYA%20REDDY%20MAND/OneDrive/Desktop/Food%20Delivery/notebooks/02_Train_First_regression_model.ipynb)
+
+---
+
+## 🔮 Future Work & Enhancement Plan
+
+To improve the baseline performance, the next phases of the project will focus on:
+1. **Feature Engineering**: Calculating the actual distance between restaurants and delivery locations using the Haversine formula from latitude and longitude coordinates.
+2. **Categorical Encoding**: One-hot encoding high-impact categorical variables such as `Weatherconditions` and `Road_traffic_density`.
+3. **Feature Scaling**: Normalizing numerical ranges to improve convergence.
+4. **Advanced Algorithms**: Training non-linear models like Decision Trees, Random Forests, or Gradient Boosting models (XGBoost/LightGBM) to capture complex interactions in the data.
