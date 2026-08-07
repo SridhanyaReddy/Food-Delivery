@@ -1,40 +1,21 @@
 # Food Delivery Time Prediction
 
-An end-to-end Machine Learning project to predict the delivery time of food orders based on historical data. This repository documents the step-by-step process of data exploration, preprocessing, baseline model training, and performance evaluation.
+## Project Overview
+
+This project aims to predict the delivery time of food orders using Machine Learning. The dataset is explored and cleaned using Pandas to prepare it for model building.
 
 ---
 
-## 📌 Problem Statement
+## Weekly Progress
 
-Predicting food delivery time accurately is critical for logistics optimization, improving rider dispatch efficiency, and boosting customer satisfaction. Using features like delivery agent details, location coordinates, traffic density, and weather conditions, this project aims to build regression models that predict the total time taken (in minutes) for a delivery.
-
----
-
-## 📁 Project Structure
-
-```text
-├── data/
-│   ├── raw/          # Raw dataset files
-│   └── processed/    # Cleaned and preprocessed datasets (e.g., cleaned_food_delivery.csv)
-├── notebooks/
-│   ├── 01_Data_Exploration.ipynb       # Phase 1: Data cleaning and exploratory analysis
-│   └── 02_Train_First_regression_model.ipynb  # Phase 2: Baseline linear regression model training
-├── requirements.txt  # Python package dependencies
-└── README.md         # Project documentation
-```
-
----
-
-## 🚀 Project Methodology & Weekly Progress
-
-### 🔍 Phase 1: Data Exploration & Cleaning (Week 1)
+### Phase 1: Data Exploration & Cleaning (Week 1)
 In the first notebook ([01_Data_Exploration.ipynb](file:///C:/Users/SRIDHANYA%20REDDY%20MAND/OneDrive/Desktop/Food%20Delivery/notebooks/01_Data_Exploration.ipynb)), the raw dataset was analyzed and cleaned:
 * **Exploratory Data Analysis**: Inspected shapes, column types, and statistical properties.
 * **Missing Value Imputation**: Handled missing values in `Delivery_person_Age` and `Delivery_person_Ratings` by imputing them with their respective medians.
 * **Data Validation**: Verified that no duplicate records existed.
 * **Data Export**: Saved the clean intermediate dataset as `cleaned_food_delivery.csv`.
 
-### ⚙️ Phase 2: Baseline Model Training (Week 2)
+### Phase 2: Baseline Model Training (Week 2)
 In the second notebook ([02_Train_First_regression_model.ipynb](file:///C:/Users/SRIDHANYA%20REDDY%20MAND/OneDrive/Desktop/Food%20Delivery/notebooks/02_Train_First_regression_model.ipynb)), a baseline model was trained using the raw numerical features:
 * **Target Extraction**: Cleaned `Time_taken(min)` string column to extract exact integer values (e.g., `(min) 24` -> `24`).
 * **Feature Selection**: Isolated key numerical features:
@@ -49,7 +30,7 @@ In the second notebook ([02_Train_First_regression_model.ipynb](file:///C:/Users
 
 ---
 
-## 📊 Evaluation Results
+## Evaluation Results
 
 The performance of the baseline Linear Regression model on the test dataset (20%) is summarized below:
 
@@ -67,7 +48,7 @@ The performance of the baseline Linear Regression model on the test dataset (20%
 
 ---
 
-## 🛠️ Setup & Installation
+## Setup and Installation
 
 To run this project locally, follow these steps:
 
@@ -93,7 +74,7 @@ To run this project locally, follow these steps:
 
 ---
 
-## 🔮 Future Work & Enhancement Plan
+## Future Work and Enhancement Plan
 
 To improve the baseline performance, the next phases of the project will focus on:
 1. **Feature Engineering**: Calculating the actual distance between restaurants and delivery locations using the Haversine formula from latitude and longitude coordinates.
