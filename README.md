@@ -34,17 +34,24 @@ The model uses the following features to predict delivery time:
 
 ---
 
-## Tasks Completed
+## Weekly Progress
 
+### Week 1: Data Exploration & Cleaning
 - Loaded the dataset using Pandas
-- Explored the dataset
-- Checked dataset shape and columns
-- Identified data types
-- Checked missing values
-- Checked duplicate values
-- Cleaned the dataset
-- Saved the cleaned dataset
-- Identified Features (X) and Label (y)
+- Explored columns, data shapes, and types
+- Checked for and handled missing values (imputed Age and Ratings using medians)
+- Verified duplicates and saved the cleaned dataset to `data/processed/cleaned_food_delivery.csv`
+
+### Week 2: Baseline Model Training
+- Cleaned and prepared string columns: `Time_taken(min)` (extracted numeric values) and `multiple_deliveries` (imputed missing string values with median)
+- Selected 8 baseline numerical features
+- Split dataset using `train_test_split()` (80% Train, 20% Test, `random_state=42`)
+- Trained a **Linear Regression** model on training data
+- Evaluated performance on test data:
+  - **Mean Absolute Error (MAE)**: 6.14 minutes
+  - **Mean Squared Error (MSE)**: 59.57
+  - **Root Mean Squared Error (RMSE)**: 7.72 minutes
+  - **R² Score**: 0.3206
 
 ---
 
@@ -52,6 +59,8 @@ The model uses the following features to predict delivery time:
 
 - Python
 - Pandas
+- NumPy
+- Scikit-learn (Linear Regression, Train-Test Split, Evaluation Metrics)
 - Jupyter Notebook
 - VS Code
 
