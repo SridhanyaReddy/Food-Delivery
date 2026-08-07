@@ -71,13 +71,3 @@ To run this project locally, follow these steps:
    Open and run the notebooks in sequence:
    * [01_Data_Exploration.ipynb](file:///C:/Users/SRIDHANYA%20REDDY%20MAND/OneDrive/Desktop/Food%20Delivery/notebooks/01_Data_Exploration.ipynb)
    * [02_Train_First_regression_model.ipynb](file:///C:/Users/SRIDHANYA%20REDDY%20MAND/OneDrive/Desktop/Food%20Delivery/notebooks/02_Train_First_regression_model.ipynb)
-
----
-
-## Future Work and Enhancement Plan
-
-To improve the baseline performance, the next phases of the project will focus on:
-1. **Feature Engineering**: Calculating the actual distance between restaurants and delivery locations using the Haversine formula from latitude and longitude coordinates.
-2. **Categorical Encoding**: One-hot encoding high-impact categorical variables such as `Weatherconditions` and `Road_traffic_density`.
-3. **Feature Scaling**: Normalizing numerical ranges to improve convergence.
-4. **Advanced Algorithms**: Training non-linear models like Decision Trees, Random Forests, or Gradient Boosting models (XGBoost/LightGBM) to capture complex interactions in the data.
